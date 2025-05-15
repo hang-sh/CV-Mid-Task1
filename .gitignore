@@ -2,6 +2,5 @@
 /saved_models/
 /report/
 /caltech-101/
-# 忽略 Python 编译产生的 __pycache__ 文件夹
 __pycache__/
 
