@@ -62,7 +62,7 @@ python test.py
 
 ### 超参数搜索
 
-打开文件 `hyperparam_search.py`，在”超参数搜索空间“部分填写需要搜索的超参数范围，并运行文件：
+打开 `hyperparam_search.py` 文件，在”超参数搜索空间“部分填写需要搜索的超参数范围，并运行文件：
 
 ```bash
 python hyperparam_search.py
