@@ -6,3 +6,5 @@ __pycache__/
 *.csv
 /data/
 /BACKGROUND_Google/
+/kaggle_test1.py
+/kaggle_test2.py

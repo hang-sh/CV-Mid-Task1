@@ -29,9 +29,8 @@ if not os.path.exists(save_dir):
     os.makedirs(save_dir)    
 
 data_path = '.\\data\\101_ObjectCategories'
-train_data, val_data, _, classes = get_datasets(data_path)
+train_data, val_data, _ = get_datasets(data_path)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-num_classes = len(classes)
 
 # 超参数搜索空间
 learning_rates = [0.01, 0.001, 0.0001]
@@ -41,7 +40,7 @@ step_sizes = [5, 10]
 gamma_list = [0.1, 0.5, 0.9]
 
 param_grid = product(learning_rates, batch_sizes, weight_decays, step_sizes, gamma_list)
-epochs = 25
+epochs = 20
 
 for lr, batch_size, weight_decay, step_size, gamma in param_grid:
     # 记录训练过程中的各种信息
@@ -55,7 +54,7 @@ for lr, batch_size, weight_decay, step_size, gamma in param_grid:
     model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
     # 修改输出层
     n_hidden = model.fc.in_features
-    model.fc = nn.Linear(n_hidden, num_classes)
+    model.fc = nn.Linear(n_hidden, 101)
     model = model.to(device)
 
     # 数据加载

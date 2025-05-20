@@ -36,7 +36,7 @@ batch_size = 32
 weight_decay = 0.0001
 step_size = 10
 gamma = 0.9
-epochs = 25
+epochs = 20
 
 # 记录训练过程中的各种信息
 exp_name = f"resnet18_lr{lr}_bs{batch_size}_wd{weight_decay}_ss{step_size}_g{gamma}"
