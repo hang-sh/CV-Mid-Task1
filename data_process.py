@@ -10,4 +10,4 @@ def get_datasets(data_path, random_state=42):
     dataset = datasets.ImageFolder(root=data_path, transform=transform)
     train_val_data, test_data = train_test_split(dataset, test_size=0.2, random_state=random_state)
     train_data, val_data = train_test_split(train_val_data, test_size=0.125, random_state=random_state)
-    return train_data, val_data, test_data, dataset.classes
+    return train_data, val_data, test_data

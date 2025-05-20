@@ -8,15 +8,14 @@ from data_process import get_datasets
 def test_model(data_path, model_path):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # 加载测试集
-    _, _, test_data, classes = get_datasets(data_path)
+    _, _, test_data = get_datasets(data_path)
     TestLoader = DataLoader(test_data, batch_size=32, shuffle=True)
-    num_classes = len(classes)
     # 加载模型
     model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
     # model = models.resnet18(weights=None)
     # 修改输出层
     n_hidden = model.fc.in_features
-    model.fc = nn.Linear(n_hidden, num_classes)
+    model.fc = nn.Linear(n_hidden, 101)
     model = model.to(device)
     model.load_state_dict(torch.load(model_path))
     model.eval()

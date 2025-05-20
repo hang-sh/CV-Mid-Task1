@@ -27,9 +27,8 @@ if not os.path.exists(save_dir):
     os.makedirs(save_dir)    
 
 data_path = '.\\data\\101_ObjectCategories'
-train_data, val_data, _, classes = get_datasets(data_path)
+train_data, val_data, _ = get_datasets(data_path)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-num_classes = len(classes)
 
 # 超参数配置
 lr = 0.01
@@ -53,7 +52,7 @@ model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
 
 # 修改输出层
 n_hidden = model.fc.in_features
-model.fc = nn.Linear(n_hidden, num_classes)
+model.fc = nn.Linear(n_hidden, 101)
 model = model.to(device)
 
 # 数据加载
